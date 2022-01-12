@@ -62,8 +62,8 @@
 ### <a name="2">包装类型</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 所谓包装类，就是能够直接将简单类型的变量表示为一个类，在执行变量类型的相互转换时，我们会大量使用这些包装类。
 - 以下用途
-1. 作为基本数据类型对应的类类型，提供了一系列实用的对象操作，如类型转换，进制转换等
-2. 集合不允许存放基本数据类型，故常用包装类
+1. 集合不允许存放基本数据类型，故常用包装类
+2. 作为基本数据类型对应的类类型，提供了一系列实用的对象操作，如类型转换，进制转换等
 3. 包含了每种基本类型的相关属性，如最大值，最小值，所占位数等
 
 包装类都为final 不可继承
@@ -93,15 +93,22 @@ new Integer(123) 与 Integer.valueOf(123) 的区别在于：
 - int values: between -128 and 127
 - char: in the range \u0000 to \u007F
     
-### <a name="4">BigDecimal</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
-BigDecimal 主要用于处理解决精度丢失问题
-- float和double类型主要是为了科学计算和工程计算而设计的。执行二进制浮点运算，这是为了在广泛的数字范围上提供较为精确的快速近似计算而精心设计的。然而，它们并没有提供完全精确的结果
+### <a name="4">大数</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+BigInteger 支持任意精度的整数
+BigDecimal 支持任何精度的浮点数
+- 推荐使用字符参数构造器创建实例：new BigInteger(String)或new BigDecimal(String)。
+- 不要使用 new BigDecimal(double)来创建实例，有精度问题。
+- 使用add，substract，multiple，divide和remainder方法完成算数运算，使用compareTo方法比较两个大数字
 ```
-float a = 1.0f - 0.9f;
-float b = 0.9f - 0.8f;
-System.out.println(a);// 0.100000024
-System.out.println(b);// 0.099999964
-System.out.println(a == b);// false
+BigInteger bi1 = new BigInteger("123456789") ;	// 声明BigInteger对象
+BigInteger bi2 = new BigInteger("987654321") ;	// 声明BigInteger对象
+System.out.println("加法操作：" + bi2.add(bi1)) ;	// 加法操作
+System.out.println("最大数：" + bi2.max(bi1)) ;	 // 求出最大数
+BigInteger result[] = bi2.divideAndRemainder(bi1) ;	// 求出余数的除法操作
+System.out.println("商是：" + result[0] +"；余数是：" + result[1]) ;
+BigDecimal b1 = new BigDecimal(d) ;
+BigDecimal b2 = new BigDecimal(1) ;
+b1.divide(b2,len,BigDecimal.ROUND_HALF_UP).doubleValue() ;//四舍五入
 ```
     
 ## <a name="5">String</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
