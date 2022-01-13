@@ -4,7 +4,7 @@
 &emsp;<a href="#1">1. 基本数据类型</a>  
 &emsp;&emsp;<a href="#2">1.1. 包装类型</a>  
 &emsp;&emsp;&emsp;<a href="#3">1.1.1. 缓冲池</a>  
-&emsp;&emsp;<a href="#4">1.2. BigDecimal</a>  
+&emsp;&emsp;<a href="#4">1.2. 大数</a>  
 &emsp;<a href="#5">2. String</a>  
 &emsp;&emsp;<a href="#6">2.1. String, StringBuffer and StringBuilder</a>  
 &emsp;&emsp;&emsp;<a href="#7">2.1.1. 内部数据结构</a>  
